@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rony - Portafolio</title>
+    <title>Proyectos - Rony</title>
     <style>
         * {
             margin: 0;
@@ -89,7 +89,6 @@
             font-weight: bold;
             transition: all 0.3s ease;
             text-shadow: 0 0 10px #00ff88;
-            cursor: pointer;
         }
 
         .menu-lateral ul li a:hover {
@@ -98,80 +97,13 @@
             font-size: 20px;
         }
 
-        /* Contenedor Principal */
-        .container {
-            width: 100%;
-            min-height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            background: linear-gradient(135deg, #0a0e27 0%, #1a1a2e 50%, #16213e 100%);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .container.hidden {
-            display: none;
-        }
-
-        .container::before {
-            content: '';
-            position: absolute;
-            width: 300px;
-            height: 300px;
-            background: radial-gradient(circle, rgba(0, 255, 136, 0.1) 0%, transparent 70%);
-            border-radius: 50%;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            animation: glow 3s ease-in-out infinite;
-        }
-
-        @keyframes glow {
-            0%, 100% {
-                transform: translate(-50%, -50%) scale(1);
-                opacity: 0.5;
-            }
-            50% {
-                transform: translate(-50%, -50%) scale(1.2);
-                opacity: 0.8;
-            }
-        }
-
-        /* Contenido */
-        .content {
-            text-align: center;
-            z-index: 1;
-        }
-
-        .neon-text {
-            font-size: 72px;
-            color: #00ff88;
-            text-shadow: 0 0 10px #00ff88, 0 0 20px #00ff88, 0 0 30px #00ff88, 0 0 40px #00ff88;
-            letter-spacing: 3px;
-            animation: neon-flicker 3s infinite;
-            font-weight: bold;
-        }
-
-        @keyframes neon-flicker {
-            0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% {
-                text-shadow: 0 0 10px #00ff88, 0 0 20px #00ff88, 0 0 30px #00ff88, 0 0 40px #00ff88;
-            }
-            20%, 24%, 55% {
-                text-shadow: 0 0 5px #00ff88;
-            }
-        }
-
         /* Página de Proyectos */
         .projects-page {
             width: 100%;
             min-height: 100vh;
             background: linear-gradient(135deg, #0a0e27 0%, #1a1a2e 50%, #16213e 100%);
             padding-top: 80px;
-        }
-
-        .projects-page.hidden {
-            display: none;
+            padding-bottom: 40px;
         }
 
         .projects-container {
@@ -223,10 +155,6 @@
 
         /* Responsive */
         @media (max-width: 768px) {
-            .neon-text {
-                font-size: 48px;
-            }
-
             .menu-lateral {
                 width: 100%;
                 left: -100%;
@@ -253,20 +181,13 @@
     <!-- Menú Lateral -->
     <nav class="menu-lateral" id="menuLateral">
         <ul>
-            <li><a onclick="mostrarInicio()">Inicio</a></li>
-            <li><a onclick="mostrarProyectos()">Proyectos</a></li>
+            <li><a href="/">Inicio</a></li>
+            <li><a href="/app">Proyectos</a></li>
         </ul>
     </nav>
 
-    <!-- Página de Inicio -->
-    <div class="container" id="paginaInicio">
-        <div class="content">
-            <h1 class="neon-text">Hola Soy Rony</h1>
-        </div>
-    </div>
-
     <!-- Página de Proyectos -->
-    <div class="projects-page hidden" id="paginaProyectos">
+    <div class="projects-page">
         <div class="projects-container">
             <h1>Mis Proyectos</h1>
             
@@ -303,30 +224,12 @@
         // Obtener elementos
         const menuToggle = document.getElementById('menuToggle');
         const menuLateral = document.getElementById('menuLateral');
-        const paginaInicio = document.getElementById('paginaInicio');
-        const paginaProyectos = document.getElementById('paginaProyectos');
 
         // Toggle del menú
         menuToggle.addEventListener('click', function() {
             menuToggle.classList.toggle('active');
             menuLateral.classList.toggle('active');
         });
-
-        // Función para mostrar inicio
-        function mostrarInicio() {
-            paginaInicio.classList.remove('hidden');
-            paginaProyectos.classList.add('hidden');
-            menuToggle.classList.remove('active');
-            menuLateral.classList.remove('active');
-        }
-
-        // Función para mostrar proyectos
-        function mostrarProyectos() {
-            paginaInicio.classList.add('hidden');
-            paginaProyectos.classList.remove('hidden');
-            menuToggle.classList.remove('active');
-            menuLateral.classList.remove('active');
-        }
 
         // Cerrar menú al hacer clic fuera
         document.addEventListener('click', function(event) {
